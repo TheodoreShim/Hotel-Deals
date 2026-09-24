@@ -32,7 +32,7 @@ if [ -n "$NEW_REFRESH_TOKEN" ]; then
 fi
 
 TEMPLATE=$(jq -n --arg text "$MESSAGE" --arg url "$LINK_URL" \
-  '{object_type:"text", text:$text, link:{web_url:$url, mobile_web_url:$url}}')
+  '{object_type:"text", text:$text, link:{web_url:$url, mobile_web_url:$url}, button_title:"예약 페이지 보기"}')
 
 SEND_RESPONSE=$(curl -s -X POST "https://kapi.kakao.com/v2/api/talk/memo/default/send" \
   -H "Authorization: Bearer ${ACCESS_TOKEN}" \
