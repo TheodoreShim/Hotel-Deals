@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # 카카오톡 "나에게 보내기"로 브리핑 요약을 전송한다.
-# 사용법: send_kakao.sh "보낼 메시지 텍스트" "웹 링크(선택)"
+# 사용법: send_kakao.sh "보낼 메시지 텍스트" "웹 링크(선택)" "자격증명파일(선택, 기본값은 본인 계정)"
 set -euo pipefail
 
-CRED_FILE="$(dirname "$0")/../.kakao_credentials.json"
 MESSAGE="${1:?메시지 텍스트가 필요합니다}"
 LINK_URL="${2:-https://developers.kakao.com}"
+CRED_FILE="${3:-$(dirname "$0")/../.kakao_credentials.json}"
 
 CLIENT_ID=$(jq -r '.client_id' "$CRED_FILE")
 CLIENT_SECRET=$(jq -r '.client_secret' "$CRED_FILE")
